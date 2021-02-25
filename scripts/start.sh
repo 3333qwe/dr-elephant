@@ -16,6 +16,12 @@
 # the License.
 #
 
+# aws specific
+export HADOOP_HOME=/usr/lib/hadoop
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export SPARK_HOME=/usr/lib/spark
+export SPARK_CONF_DIR=/usr/lib/spark/conf
+
 function print_usage() {
   echo "usage: ./start.sh PATH_TO_APP_CONFIG_DIR(optional, if you have already set env variable ELEPHANT_CONF_DIR)"
 }
@@ -100,7 +106,7 @@ db_password="${db_password:-""}"
 
 #http port is optional. default is 8080
 http_port="${http_port:-8080}"
-echo "http port: " $port
+echo "http port: " $http_port
 
 # Check for keytab_user, keytab_location and application_secret in the elephant.conf
 if [ -n "${keytab_user}" ]; then
@@ -184,6 +190,8 @@ OPTS+=" -Ddb.default.url=$db_loc -Ddb.default.user=$db_user -Ddb.default.passwor
 
 # set Java related options (e.g. -Xms1024m -Xmx1024m)
 export JAVA_OPTS="-XX:+HeapDumpOnOutOfMemoryError"
+
+
 
 # Start Dr. Elaphant
 echo "Starting Dr. Elephant ...."
