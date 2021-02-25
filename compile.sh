@@ -266,8 +266,8 @@ function runStyleChecks() {
 require_programs zip unzip
 
 # Default configurations
-HADOOP_VERSION="2.3.0"
-SPARK_VERSION="1.4.0"
+HADOOP_VERSION="2.8.5"
+SPARK_VERSION="2.4.4"
 
 
 extra_commands=""
