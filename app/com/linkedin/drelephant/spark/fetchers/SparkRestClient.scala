@@ -65,7 +65,7 @@ class SparkRestClient(sparkConf: SparkConf) {
         if (historyServerAddress.contains(s"http://")) {
           new URI(historyServerAddress)
         } else {
-          new URI(s"https://${historyServerAddress}")
+          new URI(s"https://ip-10-74-155-126.vpc.internal:18480")
         }
       require(baseUri.getPath == "")
       baseUri
