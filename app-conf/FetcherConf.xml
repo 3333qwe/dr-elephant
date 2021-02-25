@@ -58,17 +58,17 @@
      To work properly, this fetcher should use the same timezone with the job history server.
      If not set, the local timezone will be used.
    -->
-  
-  <fetcher>
-    <applicationtype>mapreduce</applicationtype>
-    <classname>com.linkedin.drelephant.mapreduce.fetchers.MapReduceFSFetcherHadoop2</classname>
-    <params>
-      <sampling_enabled>false</sampling_enabled>
-      <history_log_size_limit_in_mb>500</history_log_size_limit_in_mb>
-      <history_server_time_zone>PST</history_server_time_zone>
-    </params>
-  </fetcher>
-  
+
+<!--  <fetcher>-->
+<!--    <applicationtype>mapreduce</applicationtype>-->
+<!--    <classname>com.linkedin.drelephant.mapreduce.fetchers.MapReduceFSFetcherHadoop2</classname>-->
+<!--    <params>-->
+<!--      <sampling_enabled>false</sampling_enabled>-->
+<!--      <history_log_size_limit_in_mb>500</history_log_size_limit_in_mb>-->
+<!--      <history_server_time_zone>PST</history_server_time_zone>-->
+<!--    </params>-->
+<!--  </fetcher>-->
+
 
   <!--
     FSFetcher for Spark. Loads the eventlog from HDFS and replays to get the metrics and application properties
@@ -86,15 +86,15 @@
       <event_log_location_uri>webhdfs://localhost:50070/system/spark-history</event_log_location_uri>
     </params>
   -->
-  <fetcher>
-    <applicationtype>spark</applicationtype>
-    <classname>com.linkedin.drelephant.spark.fetchers.FSFetcher</classname>
-  </fetcher>
+<!--  <fetcher>-->
+<!--    <applicationtype>spark</applicationtype>-->
+<!--    <classname>com.linkedin.drelephant.spark.fetchers.FSFetcher</classname>-->
+<!--  </fetcher>-->
 
   <!--
   This is an experimental fetcher for Spark applications which uses SHS REST API to get application metrics
   and WebHDFS to get application properties from eventlogs. Please note that this fetcher also supports backfill.
-  But backfill implementation in this fetcher relies upon SHS REST APIs' which are only available since Spark 2.3 
+  But backfill implementation in this fetcher relies upon SHS REST APIs' which are only available since Spark 2.3
 
    <fetcher>
     <applicationtype>spark</applicationtype>
@@ -125,4 +125,14 @@
     <applicationtype>tony</applicationtype>
     <classname>com.linkedin.drelephant.tony.fetchers.TonyFetcher</classname>
   </fetcher-->
+
+  <fetcher>
+    <applicationtype>spark</applicationtype>
+    <classname>com.linkedin.drelephant.spark.fetchers.SparkFetcher</classname>
+    <params>
+      <use_rest_for_eventlogs>true</use_rest_for_eventlogs>
+      <should_process_logs_locally>true</should_process_logs_locally>
+    </params>
+  </fetcher>
+
 </fetchers>
