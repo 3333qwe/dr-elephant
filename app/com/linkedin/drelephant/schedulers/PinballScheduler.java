@@ -18,7 +18,7 @@ public class PinballScheduler implements Scheduler {
   public static final String PINBALL_JOB = "pinball.job";
   public static final String PINBALL_EXECUTION = "pinball.execution";
   public static final String PINBALL_BASE_URL = "scheduler.url";
-  public static final String PINBALL_BASE_URL_DEFAULT = "http://localhost:8080";
+  public static final String PINBALL_BASE_URL_DEFAULT = "http://localhost:8087";
 
   private String _schedulerName;
   private String _jobName;
